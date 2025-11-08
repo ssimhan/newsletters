@@ -1,9 +1,9 @@
 ---
-title: The Trillion Dollar AI Software Development Stack
-date: '2025-10-10'
 source: podcast
+title: The Trillion Dollar AI Software Development Stack
 url: >-
   https://ai-a16z.simplecast.com/episodes/the-trillion-dollar-ai-software-development-stack-xYS2_Aw3
+date: '2025-10-10'
 author: AI + a16z
 transcript: false
 ---
