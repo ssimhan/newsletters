@@ -59,7 +59,6 @@
 - Added `.github/workflows/sync.yml`
 - Updated `package.json` with ingest + validate scripts
 - Added repo secrets for GitHub owner/repo and feeds
-- Decided to skip the auto-plan script; using manual plan updates + normal commits
 
 **Next steps**
 - (Optional) Add multi-feed support later via `SUBSTACK_FEEDS` + small script

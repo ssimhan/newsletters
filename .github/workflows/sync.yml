@@ -1,24 +1,21 @@
-name: Auto-Ingest and Validate
+name: Auto Ingest (Substack + Podcast)
 
 on:
-  schedule:
-    - cron: "0 17 * * *"   # daily at 17:00 UTC
   workflow_dispatch:
     inputs:
-      run_web_single:
-        description: "Also run a one-off web ingest?"
+      run_substack:
+        description: "Run Substack ingest"
         required: false
-        default: "false"
-        type: choice
-        options: ["false", "true"]
-      web_url:
-        description: "URL to ingest if run_web_single=true"
+        default: "true"
+      run_podcast:
+        description: "Run Podcast ingest"
         required: false
-        type: string
+        default: "true"
+  schedule:
+    - cron: "17 9 * * *" # daily 09:17 UTC
 
 permissions:
   contents: write
-  actions: read
 
 concurrency:
   group: auto-ingest
@@ -27,52 +24,42 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
+
     env:
-      GITHUB_OWNER: ssimhan
-      GITHUB_REPO:  newsletters
-      GITHUB_DEFAULT_BRANCH: main
-      GITHUB_TOKEN: ${{ secrets.PAT_REPO || secrets.GITHUB_TOKEN }}
-      SUBSTACK_FEED: ${{ secrets.SUBSTACK_FEED }}
-      PODCAST_FEED:  ${{ secrets.PODCAST_FEED }}
-      WEB_SINGLE_URL: ${{ inputs.web_url }}
+      # dialed-in repo info (not secrets)
+      REPO_OWNER: "ssimhan"
+      REPO_NAME: "newsletters"
+      DEFAULT_BRANCH: "main"
+
+      # feeds (hard-code for now, or remove and set as repo variables/secrets)
+      SUBSTACK_FEED: "https://substack.gauravvohra.com/feed"
+      PODCAST_FEED: "https://feeds.simplecast.com/Hb_IuXOo"
+
+      # auth (must be a secret)
+      GITHUB_TOKEN: ${{ secrets.PAT_REPO }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          ref: ${{ env.DEFAULT_BRANCH }}
 
-      - name: Setup Node
+      - name: Use Node.js 20
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
 
-      - name: Install
+      - name: Install deps
         run: npm ci
 
-      - name: Configure git identity (for programmatic commits)
-        run: |
-          git config user.name  "sandhya-bot"
-          git config user.email "actions@users.noreply.github.com"
+      - name: Substack ingest
+        if: ${{ github.event_name == 'schedule' || inputs.run_substack == 'true' }}
+        run: npm run ingest:substack
 
-      - name: Run daily ingest (Substack + Podcast) and validate
-        run: |
-          set -e
-          npm run all
+      - name: Podcast ingest
+        if: ${{ github.event_name == 'schedule' || inputs.run_podcast == 'true' }}
+        run: npm run ingest:podcast
 
-      - name: Optional run single web ingest
-        if: ${{ github.event_name == 'workflow_dispatch' && inputs.run_web_single == 'true' && inputs.web_url != '' }}
-        run: |
-          npm run ingest:web:single
-
-      - name: Auto-commit any local-only changes (validator renames, etc.)
-        run: |
-          set -e
-          if ! git diff --quiet; then
-            git add -A
-            git commit -m "chore: normalize frontmatter & slugs [skip ci]"
-            git push origin $GITHUB_DEFAULT_BRANCH
-          else
-            echo "No local file changes to commit."
-          fi
+      - name: Validate + fix
+        run: npm run validate:fix
