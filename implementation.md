@@ -13,9 +13,11 @@
 - Verified `npm run smoke` commits `docs/SMOKE.md` to GitHub.
 - Committed and pushed successfully.  
 
-Next: **Stage 2 — Substack Ingest**  
-→ Build the Substack RSS → Markdown pipeline and test with  
-`https://lennysnewsletter.substack.com/feed`
+✅ **Stage 2 — Substack Ingest: Complete**
+- Added `src/sources/substack.js` and `src/cli.js`
+- Ingested 10 items from `https://substack.gauravvohra.com/feed`
+- Verified files in `/substack/` with correct frontmatter and Markdown
+
 
 # Implementation Plan — Auto-Ingest (VS Code + Claude Code + GitHub)
 
