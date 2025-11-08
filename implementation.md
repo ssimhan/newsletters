@@ -1,3 +1,22 @@
+# Implementation Progress
+
+✅ **Stage 1 — Project Scaffolding & Config: Complete**  
+- Installed VS Code and Node v24.  
+- Verified Git (`v2.39.5 Apple`).  
+- Cloned repo successfully via VS Code.  
+- Created `.env` and `.env.example` files.  
+- Added:
+  - `src/config.js`
+  - `src/utils/github.js`
+  - `src/utils/markdown.js`
+  - `scripts/smoke-commit.js`
+- Verified `npm run smoke` commits `docs/SMOKE.md` to GitHub.
+- Committed and pushed successfully.  
+
+Next: **Stage 2 — Substack Ingest**  
+→ Build the Substack RSS → Markdown pipeline and test with  
+`https://lennysnewsletter.substack.com/feed`
+
 # Implementation Plan — Auto-Ingest (VS Code + Claude Code + GitHub)
 
 This plan breaks the project into clear, testable stages. Each stage lists goals, tasks, and a **Test/Validation** you’ll run before moving on.
