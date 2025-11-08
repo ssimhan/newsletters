@@ -1,9 +1,9 @@
 ---
-title: Tigris Data CEO on Building Your Own Datacenters
-date: '2025-11-07'
 source: podcast
+title: Tigris Data CEO on Building Your Own Datacenters
 url: >-
   https://ai-a16z.simplecast.com/episodes/tigris-data-ceo-on-building-your-own-datacenters-DlDdk8Ze
+date: '2025-11-07'
 author: AI + a16z
 transcript: false
 ---
