@@ -1,73 +1,81 @@
-import fetch from 'node-fetch';
-import { XMLParser } from 'fast-xml-parser';
-import TurndownService from 'turndown';
-import { upsertFile } from '../utils/github.js';
-import { toMarkdownFile, sanitizeFileName } from '../utils/markdown.js';
-import crypto from 'node:crypto';
+// src/sources/substack.js
+import fetch from "node-fetch";
+import { XMLParser } from "fast-xml-parser";
+import TurndownService from "turndown";
+import { upsertFile } from "../utils/github.js";
+import { toMarkdownFile } from "../utils/markdown.js";
+import { canonicalFilename } from "../utils/markdown.js";
 
 const parser = new XMLParser({ ignoreAttributes: false });
 const turndown = new TurndownService({
-  headingStyle: 'atx',
-  codeBlockStyle: 'fenced',
+  headingStyle: "atx",
+  codeBlockStyle: "fenced",
 });
 
 export async function ingestSubstack(feedUrl) {
-  const res = await fetch(feedUrl, { redirect: 'follow' });
+  const res = await fetch(feedUrl, { redirect: "follow" });
   if (!res.ok) throw new Error(`Feed request failed: ${res.status} ${res.statusText}`);
   const xml = await res.text();
   const feed = parser.parse(xml);
 
   const items = feed?.rss?.channel?.item || [];
   if (!items.length) {
-    console.log('No items found in feed.');
+    console.log("No items found in feed.");
     return;
   }
 
   let count = 0;
-for (const item of items.slice(0, 10)) {
-  const title = (item.title || 'Untitled').toString();
-  const link = (item.link || '').toString();
 
-  let pubDate = '';
-  try {
-    pubDate = new Date(item.pubDate).toISOString().slice(0, 10);
-  } catch {
-    pubDate = new Date().toISOString().slice(0, 10);
-  }
+  // Limit to recent 10 for now; adjust as needed
+  for (const item of items.slice(0, 10)) {
+    const title = (item.title || "Untitled").toString();
+    const link = (item.link || "").toString();
 
-  const author =
-    (item['dc:creator'] && item['dc:creator'].toString()) ||
-    (feed?.rss?.channel?.title?.toString?.() ?? '');
+    // Normalize date → YYYY-MM-DD
+    let pubDate = "";
+    try {
+      pubDate = new Date(item.pubDate).toISOString().slice(0, 10);
+    } catch {
+      pubDate = new Date().toISOString().slice(0, 10);
+    }
 
-  const html = (item['content:encoded'] || item.description || '').toString();
-  const bodyMd = html ? turndown.turndown(html) : '';
+    const author =
+      (item["dc:creator"] && item["dc:creator"].toString()) ||
+      (feed?.rss?.channel?.title?.toString?.() ?? "");
 
-  const md = toMarkdownFile({
-    frontmatter: {
-      source: 'substack',
-      title,
-      url: link,
-      date: pubDate,
-      author,
-      transcript: false
-    },
-    bodyMd
-  });
+    const html = (item["content:encoded"] || item.description || "").toString();
+    const bodyMd = html ? turndown.turndown(html) : "";
 
-  const slugBase = sanitizeFileName(`${pubDate}-${title}`);
-  const shortHash = crypto.createHash('sha1').update(link || title).digest('hex').slice(0, 8);
-  const path = `substack/${slugBase}-${shortHash}.md`;
-
-  try {
-    await upsertFile({
-      path,
-      content: md,
-      message: `substack: ${title}`
+    // Build markdown (frontmatter + body)
+    const md = toMarkdownFile({
+      frontmatter: {
+        source: "substack",
+        title,
+        url: link,
+        date: pubDate,
+        author,
+        transcript: false,
+      },
+      bodyMd,
     });
-    count += 1;
-  } catch (e) {
-    console.error(`skip ${title}: ${e.message}`);
+
+    // ✅ Canonical filename (no hash suffix)
+    const filename = canonicalFilename(pubDate, title); // e.g., 2025-11-08-some-title.md
+    const filePath = `substack/${filename}`;
+
+    try {
+      // Upsert by canonical path (safe: overwrites same article name)
+      await upsertFile({
+        path: filePath,
+        content: md,
+        message: `substack: ${title}`,
+      });
+      console.log(`Upserted: ${filePath}`);
+      count += 1;
+    } catch (e) {
+      console.error(`skip ${title}: ${e.message}`);
+    }
   }
-}
-console.log(`Ingested ${count} items from Substack feed.`);
+
+  console.log(`Ingested ${count} items from Substack feed.`);
 }
