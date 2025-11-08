@@ -1,9 +1,9 @@
 ---
-source: podcast
 title: 'When Deepfakes Steal $30M: The New Edge of Cybercrime'
+date: '2025-09-26'
+source: podcast
 url: >-
   https://ai-a16z.simplecast.com/episodes/when-deepfakes-steal-30m-the-new-edge-of-cybercrime-Ju51B3Oj
-date: '2025-09-26'
 author: AI + a16z
 transcript: false
 ---

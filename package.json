@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "This project automates the process of pulling content from different online sources — Substack newsletters, podcast episodes (with transcripts), and webpages — and saving them as clean Markdown files in this GitHub repository.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-  "smoke": "node scripts/smoke-commit.js"
-},
+    "smoke": "node scripts/smoke-commit.js",
+    "validate": "node scripts/validate-frontmatter.js",
+    "validate:fix": "node scripts/validate-frontmatter.js --fix"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ssimhan/newsletters.git"
@@ -13,18 +16,19 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
   "bugs": {
     "url": "https://github.com/ssimhan/newsletters/issues"
   },
   "homepage": "https://github.com/ssimhan/newsletters#readme",
   "dependencies": {
+    "@mozilla/readability": "^0.6.0",
     "@octokit/rest": "^22.0.1",
     "dotenv": "^17.2.3",
     "fast-xml-parser": "^5.3.1",
     "gray-matter": "^4.0.3",
     "jsdom": "^27.1.0",
     "node-fetch": "^3.3.2",
+    "slugify": "^1.6.6",
     "turndown": "^7.2.2",
     "yargs": "^18.0.0"
   }

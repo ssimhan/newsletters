@@ -1,9 +1,9 @@
 ---
-source: podcast
 title: 'Material Security CEO: How To Find Your Ideal Customer'
+date: '2025-10-06'
+source: podcast
 url: >-
   https://ai-a16z.simplecast.com/episodes/material-security-ceo-how-to-find-your-ideal-customer-zZVrL5A6
-date: '2025-10-06'
 author: AI + a16z
 transcript: false
 ---

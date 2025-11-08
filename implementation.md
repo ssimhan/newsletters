@@ -40,6 +40,20 @@
 * Checked frontmatter fields (`title`, `url`, `date`, `source`) and Markdown body for correctness.
 * Commit successfully appeared in GitHub repository.
 
+✅ **Stage 5 — Standardization & Frontmatter Quality: Complete**
+
+* Created `scripts/validate-frontmatter.js` to enforce consistent frontmatter across all Markdown files.  
+* Implemented rules for required keys (`title`, `date`, `source`), ISO date format (`YYYY-MM-DD`), and maximum title length (< 120 characters).  
+* Added support for a `--fix` flag to automatically normalize dates, reorder frontmatter keys, and rename files to canonical slugs.  
+* Simplified slug logic to ASCII-only (`a–z`, `0–9`, `-`) and added collision handling to avoid duplicate files by checking the `url` field.  
+* Added npm scripts in `package.json` for easy validation:  
+  ```json
+  "validate": "node scripts/validate-frontmatter.js",
+  "validate:fix": "node scripts/validate-frontmatter.js --fix"
+* Ran npm run validate:fix and confirmed successful output: “All good! Checked 20 files.”
+* Verified that all Markdown files in /substack, /podcasts, and /web have normalized frontmatter and clean filenames.
+* Committed and pushed the final validator and updated package.json to GitHub.
+
 
 # Implementation Plan — Auto-Ingest (VS Code + Claude Code + GitHub)
 

@@ -1,9 +1,9 @@
 ---
-source: podcast
 title: 'Keycard: 2026 is the Year of Agents'
+date: '2025-10-22'
+source: podcast
 url: >-
   https://ai-a16z.simplecast.com/episodes/keycard-2026-is-the-year-of-agents-rFx2QSzx
-date: '2025-10-22'
 author: AI + a16z
 transcript: false
 ---

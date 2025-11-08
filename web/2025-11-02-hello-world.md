@@ -1,9 +1,9 @@
 ---
-source: "web"
-title: "Hello World"
-url: "https://example.com"
-date: "2025-11-02"
-author: "Apps Script"
+title: Hello World
+date: '2025-11-02'
+source: web
+url: 'https://example.com'
+author: Apps Script
 transcript: false
 ---
 

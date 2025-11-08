@@ -1,8 +1,8 @@
 ---
 title: There Are Many More Worlds Than These
-url: "https://www.raptitude.com/2025/11/there-are-many-more-worlds-than-these/"
-date: 2025-11-08
+date: '2025-11-08'
 source: web
+url: 'https://www.raptitude.com/2025/11/there-are-many-more-worlds-than-these/'
 ---
 ![Post image for There Are Many More Worlds Than These](https://www.raptitude.com/wp-content/uploads/2025/11/island-shore.jpg)
 
