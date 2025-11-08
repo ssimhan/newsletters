@@ -1,0 +1,65 @@
+name: Auto Ingest (Substack + Podcast)
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_substack:
+        description: "Run Substack ingest"
+        required: false
+        default: "true"
+      run_podcast:
+        description: "Run Podcast ingest"
+        required: false
+        default: "true"
+  schedule:
+    - cron: "17 9 * * *" # daily 09:17 UTC
+
+permissions:
+  contents: write
+
+concurrency:
+  group: auto-ingest
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    env:
+      # dialed-in repo info (not secrets)
+      REPO_OWNER: "ssimhan"
+      REPO_NAME: "newsletters"
+      DEFAULT_BRANCH: "main"
+
+      # feeds (hard-code for now, or remove and set as repo variables/secrets)
+      SUBSTACK_FEED: "https://substack.gauravvohra.com/feed"
+      PODCAST_FEED: "https://feeds.simplecast.com/Hb_IuXOo"
+
+      # auth (must be a secret)
+      GITHUB_TOKEN: ${{ secrets.PAT_REPO }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.DEFAULT_BRANCH }}
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Substack ingest
+        if: ${{ github.event_name == 'schedule' || inputs.run_substack == 'true' }}
+        run: npm run ingest:substack
+
+      - name: Podcast ingest
+        if: ${{ github.event_name == 'schedule' || inputs.run_podcast == 'true' }}
+        run: npm run ingest:podcast
+
+      - name: Validate + fix
+        run: npm run validate:fix
