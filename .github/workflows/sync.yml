@@ -69,6 +69,33 @@ jobs:
           NODE_OPTIONS: "--trace-warnings"
         run: npm run ingest:substack
 
+      - name: Normalize Substack filenames (strip hash suffix)
+        run: |
+          set -e
+          shopt -s nullglob
+          changed=0
+          for f in substack/*.md; do
+            base="$(basename "$f")"
+            # pattern: YYYY-MM-DD-title-aaaaaaaa.md  OR  YYYY-MM-DD-title--aaaaaaaa.md
+            if [[ "$base" =~ ^([0-9]{4}-[0-9]{2}-[0-9]{2}-.+?)--?[0-9a-f]{8}\.md$ ]]; then
+              new="${BASH_REMATCH[1]}.md"
+              echo "Renaming $base -> $new"
+              git mv -f "substack/$base" "substack/$new" || mv -f "substack/$base" "substack/$new"
+              changed=1
+            fi
+          done
+
+          if [ "$changed" -eq 1 ]; then
+            git config --global --add safe.directory "$GITHUB_WORKSPACE"
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "ci: strip hash suffixes from Substack filenames"
+            git push origin ${{ env.DEFAULT_BRANCH }}
+          else
+            echo "No Substack hash suffixes to strip"
+          fi
+
       - name: Validate + fix (do not fail job)
         run: npm run validate:fix || true
 
