@@ -11,7 +11,8 @@
     "ingest:substack": "node src/cli.js substack --feed \"$SUBSTACK_FEED\"",
     "ingest:podcast": "node src/cli.js podcast --feed \"$PODCAST_FEED\"",
     "ingest:web:single": "node src/cli.js web --url \"$WEB_SINGLE_URL\"",
-    "all": "npm run ingest:substack && npm run ingest:podcast && npm run validate:fix"
+    "all": "npm run ingest:substack && npm run ingest:podcast && npm run validate:fix",
+    "plan:commit": "node scripts/update-plan.js --file implementation.md --stage \"Stage 6 — GitHub Actions (Cron) & Secrets\""
   },
   "repository": {
     "type": "git",

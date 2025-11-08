@@ -61,7 +61,7 @@ jobs:
           set -e
           npm run all
 
-      - name: Optional: run single web ingest
+      - name: Optional run single web ingest
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.run_web_single == 'true' && inputs.web_url != '' }}
         run: |
           npm run ingest:web:single
