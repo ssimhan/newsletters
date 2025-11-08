@@ -1,9 +1,9 @@
 ---
-title: How OpenAI Built Its Coding Agent
-date: '2025-08-29'
 source: podcast
+title: How OpenAI Built Its Coding Agent
 url: >-
   https://ai-a16z.simplecast.com/episodes/how-openai-built-its-coding-agent-C6frUqag
+date: '2025-08-29'
 author: AI + a16z
 transcript: false
 ---
