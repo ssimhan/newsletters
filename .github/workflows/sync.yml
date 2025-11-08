@@ -28,8 +28,8 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     env:
-      GITHUB_OWNER: ${{ secrets.GITHUB_OWNER }}
-      GITHUB_REPO:  ${{ secrets.GITHUB_REPO }}
+      GITHUB_OWNER: ssimhan
+      GITHUB_REPO:  newsletters
       GITHUB_DEFAULT_BRANCH: main
       GITHUB_TOKEN: ${{ secrets.PAT_REPO || secrets.GITHUB_TOKEN }}
       SUBSTACK_FEED: ${{ secrets.SUBSTACK_FEED }}
