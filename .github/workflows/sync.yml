@@ -50,16 +50,29 @@ jobs:
           node-version: "20"
           cache: "npm"
 
-      - name: Install deps
-        run: npm ci
+      - name: Install deps (robust)
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+
+      - name: Show config (no secrets)
+        run: |
+          node -e "import('./src/config.js').then(m=>{const {token,...rest}=m.cfg; console.log('CFG:', rest)})"
+          echo "HAS_SUBSTACK_FEED=${{ env.SUBSTACK_FEED != '' }}"
+          echo "HAS_PODCAST_FEED=${{ env.PODCAST_FEED != '' }}"
+          node -v
+          npm -v
+          echo "Repo files:"
+          ls -la
 
       - name: Substack ingest
         if: ${{ github.event_name == 'schedule' || inputs.run_substack == 'true' }}
+        env:
+          NODE_OPTIONS: "--trace-warnings"
         run: npm run ingest:substack
-
-      - name: Podcast ingest
-        if: ${{ github.event_name == 'schedule' || inputs.run_podcast == 'true' }}
-        run: npm run ingest:podcast
 
       - name: Validate + fix
         run: npm run validate:fix
