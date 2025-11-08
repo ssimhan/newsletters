@@ -1,4 +1,8 @@
 import matter from 'gray-matter';
+import fs from "fs";
+import path from "path";
+import slugify from "slugify";
+
 
 export function toMarkdownFile({ frontmatter, bodyMd }) {
   const fm = {
@@ -36,4 +40,27 @@ export function toFrontmatterFile(frontmatter, body) {
   }
   lines.push("---", "");
   return lines.join("\n") + (body || "").trim() + "\n";
+}
+
+export function toSlug(title) {
+  return slugify(title, {
+    lower: true,
+    strict: true,      // ASCII-only; strips punctuation
+    locale: "en",
+    trim: true
+  });
+}
+
+export function canonicalFilename(dateISO, title) {
+  return `${dateISO}-${toSlug(title)}.md`;
+}
+
+export function writeMarkdownFile(rootDir, dateISO, title, body) {
+  const dir = path.join(process.cwd(), rootDir);
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+
+  const filename = canonicalFilename(dateISO, title);
+  const full = path.join(dir, filename);
+  fs.writeFileSync(full, body, "utf8");
+  return full;
 }
