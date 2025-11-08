@@ -24,6 +24,23 @@
 - Ingested 8 items from `https://feeds.simplecast.com/Hb_IuXOo` (a16z Podcast)
 - Verified Markdown files in `/podcasts/` with correct frontmatter
 
+✅ **Stage 4 — Web Page Ingest (Single URL): Complete**
+
+* Installed required dependencies: `jsdom`, `@mozilla/readability`, `turndown`, and `slugify`.
+* Added `src/sources/web.js` to fetch and process single web pages.
+* Implemented logic to extract main article content with Readability, convert HTML to Markdown using Turndown, and save output files to `/web/`.
+* Updated `src/cli.js` to include a new `web` command using Yargs, supporting a `--url` flag for input.
+* Verified ingest with:
+
+  ```bash
+  node src/cli.js web --url "https://www.raptitude.com/2025/11/there-are-many-more-worlds-than-these/"
+  ```
+* Confirmed output file created in `/web/`:
+  `web/2025-11-08-there-are-many-more-worlds-than-these.md`
+* Checked frontmatter fields (`title`, `url`, `date`, `source`) and Markdown body for correctness.
+* Commit successfully appeared in GitHub repository.
+
+
 # Implementation Plan — Auto-Ingest (VS Code + Claude Code + GitHub)
 
 This plan breaks the project into clear, testable stages. Each stage lists goals, tasks, and a **Test/Validation** you’ll run before moving on.
