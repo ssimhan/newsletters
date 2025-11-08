@@ -7,7 +7,11 @@
   "scripts": {
     "smoke": "node scripts/smoke-commit.js",
     "validate": "node scripts/validate-frontmatter.js",
-    "validate:fix": "node scripts/validate-frontmatter.js --fix"
+    "validate:fix": "node scripts/validate-frontmatter.js --fix",
+    "ingest:substack": "node src/cli.js substack --feed \"$SUBSTACK_FEED\"",
+    "ingest:podcast": "node src/cli.js podcast --feed \"$PODCAST_FEED\"",
+    "ingest:web:single": "node src/cli.js web --url \"$WEB_SINGLE_URL\"",
+    "all": "npm run ingest:substack && npm run ingest:podcast && npm run validate:fix"
   },
   "repository": {
     "type": "git",

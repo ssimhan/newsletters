@@ -1,0 +1,78 @@
+name: Auto-Ingest and Validate
+
+on:
+  schedule:
+    - cron: "0 17 * * *"   # daily at 17:00 UTC
+  workflow_dispatch:
+    inputs:
+      run_web_single:
+        description: "Also run a one-off web ingest?"
+        required: false
+        default: "false"
+        type: choice
+        options: ["false", "true"]
+      web_url:
+        description: "URL to ingest if run_web_single=true"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: auto-ingest
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_OWNER: ${{ secrets.GITHUB_OWNER }}
+      GITHUB_REPO:  ${{ secrets.GITHUB_REPO }}
+      GITHUB_DEFAULT_BRANCH: main
+      GITHUB_TOKEN: ${{ secrets.PAT_REPO || secrets.GITHUB_TOKEN }}
+      SUBSTACK_FEED: ${{ secrets.SUBSTACK_FEED }}
+      PODCAST_FEED:  ${{ secrets.PODCAST_FEED }}
+      WEB_SINGLE_URL: ${{ inputs.web_url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install
+        run: npm ci
+
+      - name: Configure git identity (for programmatic commits)
+        run: |
+          git config user.name  "sandhya-bot"
+          git config user.email "actions@users.noreply.github.com"
+
+      - name: Run daily ingest (Substack + Podcast) and validate
+        run: |
+          set -e
+          npm run all
+
+      - name: Optional: run single web ingest
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.run_web_single == 'true' && inputs.web_url != '' }}
+        run: |
+          npm run ingest:web:single
+
+      - name: Auto-commit any local-only changes (validator renames, etc.)
+        run: |
+          set -e
+          if ! git diff --quiet; then
+            git add -A
+            git commit -m "chore: normalize frontmatter & slugs [skip ci]"
+            git push origin $GITHUB_DEFAULT_BRANCH
+          else
+            echo "No local file changes to commit."
+          fi
