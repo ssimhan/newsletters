@@ -1,9 +1,9 @@
 ---
-title: How AI Will Change Photography Forever
-date: '2025-09-17'
 source: podcast
+title: How AI Will Change Photography Forever
 url: >-
   https://ai-a16z.simplecast.com/episodes/how-ai-will-change-photography-forever-VipBASBk
+date: '2025-09-17'
 author: AI + a16z
 transcript: false
 ---
