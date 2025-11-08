@@ -26,16 +26,11 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      # dialed-in repo info (not secrets)
       REPO_OWNER: "ssimhan"
       REPO_NAME: "newsletters"
       DEFAULT_BRANCH: "main"
-
-      # feeds (hard-code for now, or remove and set as repo variables/secrets)
       SUBSTACK_FEED: "https://substack.gauravvohra.com/feed"
       PODCAST_FEED: "https://feeds.simplecast.com/Hb_IuXOo"
-
-      # auth (must be a secret)
       GITHUB_TOKEN: ${{ secrets.PAT_REPO }}
 
     steps:
@@ -74,5 +69,23 @@ jobs:
           NODE_OPTIONS: "--trace-warnings"
         run: npm run ingest:substack
 
-      - name: Validate + fix
-        run: npm run validate:fix
+      - name: Validate + fix (do not fail job)
+        run: npm run validate:fix || true
+
+      - name: Commit validator fixes (if any)
+        run: |
+          # allow commits from Actions
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "ci: normalize frontmatter & filenames"
+            git push origin ${{ env.DEFAULT_BRANCH }}
+          else
+            echo "No changes to commit"
+          fi
+
+      - name: Validate (post-fix must be clean)
+        run: npm run validate
