@@ -18,6 +18,11 @@
 - Ingested 10 items from `https://substack.gauravvohra.com/feed`
 - Verified files in `/substack/` with correct frontmatter and Markdown
 
+✅ **Stage 3 — Podcast Ingest: Complete**
+- Added `src/sources/podcast.js`
+- Wired podcast feed support into `src/cli.js`
+- Ingested 8 items from `https://feeds.simplecast.com/Hb_IuXOo` (a16z Podcast)
+- Verified Markdown files in `/podcasts/` with correct frontmatter
 
 # Implementation Plan — Auto-Ingest (VS Code + Claude Code + GitHub)
 
