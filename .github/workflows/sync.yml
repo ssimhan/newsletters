@@ -94,15 +94,16 @@ jobs:
 
       - name: Commit validator fixes (if any)
         run: |
-          # allow commits from Actions
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          if [ -n "$(git status --porcelain)" ]; then
+          if ! git diff --quiet; then
             git add -A
             git commit -m "ci: normalize frontmatter & filenames"
-            git push origin ${{ env.DEFAULT_BRANCH }}
+            git fetch origin "${{ env.DEFAULT_BRANCH }}"
+            git rebase "origin/${{ env.DEFAULT_BRANCH }}" || git pull --rebase --no-edit
+            git push origin HEAD:"${{ env.DEFAULT_BRANCH }}"
           else
             echo "No changes to commit"
           fi
