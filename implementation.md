@@ -54,16 +54,12 @@
 * Verified that all Markdown files in /substack, /podcasts, and /web have normalized frontmatter and clean filenames.
 * Committed and pushed the final validator and updated package.json to GitHub.
 
-✅ **Progress (Nov 8, 2025 PT) — Stage 6 — GitHub Actions (Cron) & Secrets**
-- Created branch `chore/auto-ingest-actions`
-- Added `.github/workflows/sync.yml`
-- Updated `package.json` with ingest + validate scripts
-- Added repo secrets for GitHub owner/repo and feeds
-
-**Next steps**
-- (Optional) Add multi-feed support later via `SUBSTACK_FEEDS` + small script
-- Manually trigger the workflow in Actions and verify Substack + Podcast ingest
-- If success: open PR and merge to `main`; if not: capture errors in plan and fix
+✅ **Stage 6 — GitHub Actions (Cron) & Secrets: Complete**
+- Created and validated `.github/workflows/sync.yml`
+- Added `scripts/normalize-substack-filenames.sh` with safe rebase push logic  
+- Added `SUBSTACK_FEED` & `PODCAST_FEED` to secrets  
+- Verified daily cron + manual trigger both work  
+- CI automatically normalizes filenames, commits validator fixes, and pushes cleanly to `main`  
 
 # Implementation Plan — Auto-Ingest (VS Code + Claude Code + GitHub)
 
