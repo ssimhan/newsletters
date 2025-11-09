@@ -1,65 +1,99 @@
-# Implementation Progress
+## Stage 6 — GitHub Actions (Cron) & Secrets
+
+### Goal
+Automate ingest + normalization + validation on a schedule or manual trigger, and safely commit the results to `main`.
+
+### Final Implementation (Complete ✅)
+- **Workflow:** `.github/workflows/sync.yml`
+  - Triggers: `workflow_dispatch` (manual) and daily cron `17 9 * * *` (09:17 UTC).
+  - Uses `actions/checkout@v4` with `fetch-depth: 0` (required for rebase).
+  - Runs Node 20, installs deps, prints non-secret config.
+  - **Substack ingest:** `npm run ingest:substack`
+  - **Normalize filenames:** `scripts/normalize-substack-filenames.sh`
+    - Strips `-<8 hex>` suffixes
+    - Collapses double dashes
+    - Trims trailing dashes before `.md`
+    - Avoids overwrites with numeric suffix if needed
+  - **Commit & push (rebase-safe):**
+    - `git fetch` → `git rebase` (or `git pull --rebase`) → `git push`
+  - **Validate + fix:** `npm run validate:fix || true` then a second rebase-safe commit/push
+  - Final **Validate** step must pass cleanly.
+
+- **Script:** `scripts/normalize-substack-filenames.sh`
+  - Bash script invoked by the workflow to clean Substack filenames.
+  - Uses `git mv` when possible (keeps history), falls back to `mv`.
+
+- **Environment & Secrets**
+  - `DEFAULT_BRANCH=main`
+  - `SUBSTACK_FEED=https://substack.gauravvohra.com/feed`
+  - `PODCAST_FEED=https://feeds.simplecast.com/Hb_IuXOo` (can be toggled in the workflow inputs)
+  - `GITHUB_TOKEN=${{ secrets.PAT_REPO }}` (Personal Access Token with `repo` scope)
+
+### Files Changed
+- **Added:** `scripts/normalize-substack-filenames.sh`
+- **Modified:** `.github/workflows/sync.yml`
+
+### How to Run
+- **Manual:** GitHub → **Actions** → **Auto Ingest (Substack + Podcast)** → **Run workflow**  
+  (leave both inputs `true` unless you want to skip one)
+- **Scheduled:** Runs daily at 09:17 UTC.
+
+### What It Does on Each Run
+1. Checkout `main` (full history).
+2. Install Node deps.
+3. (Optional) Ingest Substack → create/update markdown in `/substack`.
+4. Normalize any filenames like `YYYY-MM-DD-title-aaaaaaaa.md` → `YYYY-MM-DD-title.md`.
+5. Commit & push with rebase to avoid “fetch first” errors.
+6. Run validator auto-fixes, commit & push (rebase-safe).
+7. Final validation must be clean.
+
+### Troubleshooting
+- **“failed to push… fetch first”**  
+  Fixed by rebase-safe push blocks in both commit steps.
+- **“No such file or directory: scripts/normalize-substack-filenames.sh”**  
+  Ensure the script exists at `scripts/normalize-substack-filenames.sh` on `main`.
+- **Filenames ending with `-.md`**  
+  The normalize script trims trailing dashes; validator pass should be clean. If any legacy files remain, run the workflow once and they’ll be fixed/committed.
+
+---
+
+## Implementation Progress
 
 ✅ **Stage 1 — Project Scaffolding & Config: Complete**  
-- Installed VS Code and Node v24.  
-- Verified Git (`v2.39.5 Apple`).  
-- Cloned repo successfully via VS Code.  
-- Created `.env` and `.env.example` files.  
-- Added:
-  - `src/config.js`
-  - `src/utils/github.js`
-  - `src/utils/markdown.js`
-  - `scripts/smoke-commit.js`
-- Verified `npm run smoke` commits `docs/SMOKE.md` to GitHub.
-- Committed and pushed successfully.  
+- VS Code/Node/Git setup, repo cloned.  
+- `.env` & `.env.example` created.  
+- Added `src/config.js`, `src/utils/github.js`, `src/utils/markdown.js`, `scripts/smoke-commit.js`.  
+- Verified `npm run smoke` commits to GitHub.
 
-✅ **Stage 2 — Substack Ingest: Complete**
-- Added `src/sources/substack.js` and `src/cli.js`
-- Ingested 10 items from `https://substack.gauravvohra.com/feed`
-- Verified files in `/substack/` with correct frontmatter and Markdown
+✅ **Stage 2 — Substack Ingest: Complete**  
+- `src/sources/substack.js`, `src/cli.js`.  
+- Ingested items from `https://substack.gauravvohra.com/feed`.  
+- Files land in `/substack` with frontmatter + markdown.
 
-✅ **Stage 3 — Podcast Ingest: Complete**
-- Added `src/sources/podcast.js`
-- Wired podcast feed support into `src/cli.js`
-- Ingested 8 items from `https://feeds.simplecast.com/Hb_IuXOo` (a16z Podcast)
-- Verified Markdown files in `/podcasts/` with correct frontmatter
+✅ **Stage 3 — Podcast Ingest: Complete**  
+- Added podcast ingest; verified items ingest and write markdown.
 
-✅ **Stage 4 — Web Page Ingest (Single URL): Complete**
+✅ **Stage 4 — Validation & Normalization: Complete**  
+- `scripts/validate-frontmatter.js` plus `npm run validate` and `npm run validate:fix`.  
+- Ensures required frontmatter fields; normalizes filenames.
 
-* Installed required dependencies: `jsdom`, `@mozilla/readability`, `turndown`, and `slugify`.
-* Added `src/sources/web.js` to fetch and process single web pages.
-* Implemented logic to extract main article content with Readability, convert HTML to Markdown using Turndown, and save output files to `/web/`.
-* Updated `src/cli.js` to include a new `web` command using Yargs, supporting a `--url` flag for input.
-* Verified ingest with:
+✅ **Stage 5 — Local DX & Commands: Complete**  
+- Added npm scripts for ingest/validate.  
+- Documented one-liners for local runs & commits.
 
-  ```bash
-  node src/cli.js web --url "https://www.raptitude.com/2025/11/there-are-many-more-worlds-than-these/"
-  ```
-* Confirmed output file created in `/web/`:
-  `web/2025-11-08-there-are-many-more-worlds-than-these.md`
-* Checked frontmatter fields (`title`, `url`, `date`, `source`) and Markdown body for correctness.
-* Commit successfully appeared in GitHub repository.
+✅ **Stage 6 — GitHub Actions (Cron) & Secrets: Complete**  
+- `.github/workflows/sync.yml` added with rebase-safe commit/push.  
+- `scripts/normalize-substack-filenames.sh` added.  
+- Confirmed manual + scheduled runs succeed.
 
-✅ **Stage 5 — Standardization & Frontmatter Quality: Complete**
+---
 
-* Created `scripts/validate-frontmatter.js` to enforce consistent frontmatter across all Markdown files.  
-* Implemented rules for required keys (`title`, `date`, `source`), ISO date format (`YYYY-MM-DD`), and maximum title length (< 120 characters).  
-* Added support for a `--fix` flag to automatically normalize dates, reorder frontmatter keys, and rename files to canonical slugs.  
-* Simplified slug logic to ASCII-only (`a–z`, `0–9`, `-`) and added collision handling to avoid duplicate files by checking the `url` field.  
-* Added npm scripts in `package.json` for easy validation:  
-  ```json
-  "validate": "node scripts/validate-frontmatter.js",
-  "validate:fix": "node scripts/validate-frontmatter.js --fix"
-* Ran npm run validate:fix and confirmed successful output: “All good! Checked 20 files.”
-* Verified that all Markdown files in /substack, /podcasts, and /web have normalized frontmatter and clean filenames.
-* Committed and pushed the final validator and updated package.json to GitHub.
-
-✅ **Stage 6 — GitHub Actions (Cron) & Secrets: Complete**
-- Created and validated `.github/workflows/sync.yml`
-- Added `scripts/normalize-substack-filenames.sh` with safe rebase push logic  
-- Added `SUBSTACK_FEED` & `PODCAST_FEED` to secrets  
-- Verified daily cron + manual trigger both work  
-- CI automatically normalizes filenames, commits validator fixes, and pushes cleanly to `main`  
+## Next Steps (Post-Stage 6)
+1. **Multi-feed support:** Allow `SUBSTACK_FEEDS` env (comma-separated) and loop ingest.  
+2. **Podcast toggle:** Expose `run_podcast` input (already in YAML) and add ingest step when feed present.  
+3. **Web sources:** Add a simple webpage→markdown ingest path (bookmarklet/extension or CLI).  
+4. **Docs for non-technical users:** Quickstart: “Add your feeds, set token, click Run.”  
+5. **Optional:** Cache handling, idempotency checks, and duplicate detection.
 
 # Implementation Plan — Auto-Ingest (VS Code + Claude Code + GitHub)
 
