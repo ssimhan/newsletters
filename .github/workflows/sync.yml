@@ -70,7 +70,7 @@ jobs:
           NODE_OPTIONS: "--trace-warnings"
         run: npm run ingest:substack
 
-            - name: Normalize Substack filenames
+      - name: Normalize Substack filenames
         run: bash scripts/normalize-substack-filenames.sh
 
       - name: Commit & push normalized filenames (safe rebase)
