@@ -1,8 +1,8 @@
 ---
-source: substack
 title: Good Startup Communication
-url: 'https://substack.gauravvohra.com/p/good-startup-communication'
 date: '2025-06-03'
+source: substack
+url: 'https://substack.gauravvohra.com/p/good-startup-communication'
 author: Gaurav Vohra
 transcript: false
 ---
