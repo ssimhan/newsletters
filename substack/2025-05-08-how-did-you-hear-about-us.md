@@ -1,8 +1,8 @@
 ---
-source: substack
 title: How Did You Hear About Us?
-url: 'https://substack.gauravvohra.com/p/the-most-useful-data-your-startup'
 date: '2025-05-08'
+source: substack
+url: 'https://substack.gauravvohra.com/p/the-most-useful-data-your-startup'
 author: Gaurav Vohra
 transcript: false
 ---
