@@ -1,8 +1,8 @@
 ---
-source: substack
 title: The Waitlist Delusion
-url: 'https://substack.gauravvohra.com/p/the-waitlist-delusion'
 date: '2025-06-24'
+source: substack
+url: 'https://substack.gauravvohra.com/p/the-waitlist-delusion'
 author: Gaurav Vohra
 transcript: false
 ---
