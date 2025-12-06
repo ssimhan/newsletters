@@ -1,8 +1,8 @@
 ---
-source: substack
 title: The Two Kinds Of Growth You Can Drive
-url: 'https://substack.gauravvohra.com/p/the-two-kinds-of-growth-you-can-drive'
 date: '2025-03-28'
+source: substack
+url: 'https://substack.gauravvohra.com/p/the-two-kinds-of-growth-you-can-drive'
 author: Gaurav Vohra
 transcript: false
 ---
