@@ -1,8 +1,8 @@
 ---
-title: Obsessing Over Onboarding for 10+ Years
-date: '2025-04-23'
 source: substack
+title: Obsessing Over Onboarding for 10+ Years
 url: 'https://substack.gauravvohra.com/p/obsessing-over-onboarding-for-10'
+date: '2025-04-23'
 author: Gaurav Vohra
 transcript: false
 ---
