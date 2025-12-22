@@ -1,8 +1,8 @@
 ---
-source: substack
 title: Stop Hiring People ⚠️
-url: 'https://substack.gauravvohra.com/p/stop-hiring-people'
 date: '2025-11-06'
+source: substack
+url: 'https://substack.gauravvohra.com/p/stop-hiring-people'
 author: Gaurav Vohra
 transcript: false
 ---
