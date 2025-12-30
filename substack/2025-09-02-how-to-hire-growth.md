@@ -1,8 +1,8 @@
 ---
-source: substack
 title: How to Hire Growth
-url: 'https://substack.gauravvohra.com/p/how-to-hire-growth'
 date: '2025-09-02'
+source: substack
+url: 'https://substack.gauravvohra.com/p/how-to-hire-growth'
 author: Gaurav Vohra
 transcript: false
 ---
