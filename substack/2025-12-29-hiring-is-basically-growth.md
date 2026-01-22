@@ -1,12 +1,12 @@
 ---
-title: Hiring is Basically Growth
-date: '2025-12-29'
 source: substack
+title: Hiring is Basically Growth
 url: 'https://substack.gauravvohra.com/p/hiring-is-basically-growth'
+date: '2025-12-29'
 author: Gaurav Vohra
 transcript: false
 ---
-It was 2016 at Superhuman. We had problems.
+Superhuman in 2016. We had problems.
 
 We were grinding hard.
 
@@ -14,9 +14,9 @@ But we barely had an MVP.
 
 Our prototype was riddled with bugs.
 
-We needed more engineers. We had 4 including our CTO, but it was nowhere near enough.
+We needed more engineers. We had 3 plus our CTO, but it was nowhere near enough.
 
-We needed closer to 10 engineers to ship a basic MVP.
+We needed to triple to ship a basic MVP.
 
 Being responsible for growth, I faced an impasse:
 
@@ -111,7 +111,7 @@ You want candidates to feel excited and impressed. They should think “I love t
 
 Knowing what to say makes every second count.
 
-At Superhuman, everyone running interviews authored their own one-page pitch doc, and it worked.
+At Superhuman, everyone running interviews authored their own one-page pitch doc, and it worked[5](#footnote-5).
 
 ## Reach a large top of funnel
 
@@ -208,7 +208,7 @@ Thank you for reading Growth by Gaurav. Subscribe to receive the latest:
 
 ## Optimize every conversion step
 
-There are 5 stages to a typical hiring funnel[5](#footnote-5).
+There are 5 stages to a typical hiring funnel[6](#footnote-6).
 
 > Outreach → Screen → Onsite → Offer → Accepted
 
@@ -361,7 +361,7 @@ The top row tells you the numbers you must hit to close 10 hires:
 
 In this example, you need to:
 
-*   Receive ~500 applications[6](#footnote-6)
+*   Receive ~500 applications[7](#footnote-7)
     
 *   Message ~100 candidates on hiring platforms
     
@@ -461,8 +461,12 @@ Or whatever it’s called these days.
 
 [5](#footnote-anchor-5)
 
-Each stage consists of multiple interviews, often spread over multiple days. But for modeling purposes we simplify and bucket into 5 stages.
+Credit to [Vivek](https://www.linkedin.com/in/vsodera) for hammering this concept into us all.
 
 [6](#footnote-anchor-6)
+
+Each stage consists of multiple interviews, often spread over multiple days. But for modeling purposes we simplify and bucket into 5 stages.
+
+[7](#footnote-anchor-7)
 
 Inbound might be much leakier for certain roles and companies. A desirable role at a very buzzy startup might only have a 1% conversion to screen rate, not 5%. Obviously this 5x’s the number of applicants needed.
