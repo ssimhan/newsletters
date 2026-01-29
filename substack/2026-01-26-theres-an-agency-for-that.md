@@ -1,8 +1,8 @@
 ---
-title: There's an agency for that
-date: '2026-01-26'
 source: substack
+title: There's an agency for that
 url: 'https://substack.gauravvohra.com/p/theres-an-agency-for-that'
+date: '2026-01-26'
 author: Gaurav Vohra
 transcript: false
 ---
@@ -106,7 +106,7 @@ Tiny, AI-first agencies are flourishing.
 
 We’re in a Cambrian-era explosion of agency diversity.
 
-Every possible niche in the marketing ecosystem is being filled by solo practitioners and small agencies who do _one thing, extremely well, over and over again._
+Every possible niche in the marketing ecosystem is being filled by Ai-powered agencies who do _one thing, extremely well, over and over again._
 
 ## There’s an agency for that
 
@@ -142,11 +142,15 @@ This part is non-obvious to founders and marketers.
 
 For startups, it is _strictly rational_ to hire the agency.
 
-On the one hand, spend 40 hours over 6 weeks to hire one person.
+On one hand, spend 30 hours over 3 months to hire one person.
 
-On the other, spend 4 hours over 1 week to engage the world’s best agency.
+On the other, spend 30 minutes over 3 days to find the world's best agency.
 
-The choice is obvious.
+Your employee sees 1 company.
+
+The agency sees 10 companies, sees 10x more, learns 10x faster.
+
+The choice is clear.
 
 By the time you’ve [defined](https://substack.gauravvohra.com/p/stop-hiring-people), opened, and filled the role, the channel’s changed. The [W’s on X](https://x.com/tobinwtang/status/2010537973746483248). The arb’s gone.
 
