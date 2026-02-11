@@ -1,8 +1,8 @@
 ---
-source: substack
 title: There's an agency for that
-url: 'https://substack.gauravvohra.com/p/theres-an-agency-for-that'
 date: '2026-01-26'
+source: substack
+url: 'https://substack.gauravvohra.com/p/theres-an-agency-for-that'
 author: Gaurav Vohra
 transcript: false
 ---
