@@ -1,8 +1,8 @@
 ---
-title: What Made You Cancel?
-date: '2026-02-03'
 source: substack
+title: What Made You Cancel?
 url: 'https://substack.gauravvohra.com/p/what-made-you-cancel'
+date: '2026-02-03'
 author: Gaurav Vohra
 transcript: false
 ---
