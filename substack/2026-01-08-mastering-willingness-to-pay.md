@@ -1,8 +1,8 @@
 ---
-title: Mastering Willingness to Pay
-date: '2026-01-08'
 source: substack
+title: Mastering Willingness to Pay
 url: 'https://substack.gauravvohra.com/p/mastering-willingness-to-pay'
+date: '2026-01-08'
 author: Gaurav Vohra
 transcript: false
 ---
