@@ -1,8 +1,8 @@
 ---
-source: substack
 title: The Aha Moment
-url: 'https://substack.gauravvohra.com/p/the-aha-moment'
 date: '2026-02-17'
+source: substack
+url: 'https://substack.gauravvohra.com/p/the-aha-moment'
 author: Gaurav Vohra
 transcript: false
 ---
