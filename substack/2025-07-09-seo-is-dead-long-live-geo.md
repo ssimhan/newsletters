@@ -1,9 +1,9 @@
 ---
-title: SEO Is Dead. Long Live GEO.
-date: '2025-07-09'
 source: substack
+title: SEO Is Dead. Long Live GEO.
 url: >-
   https://substack.gauravvohra.com/p/search-is-dead-long-live-llms-winning-in-the-era-of-llms-ai-overviews-and-geo
+date: '2025-07-09'
 author: Gaurav Vohra
 transcript: false
 ---
