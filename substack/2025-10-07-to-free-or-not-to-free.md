@@ -1,6 +1,6 @@
 ---
 source: substack
-title: "To Free or Not To Free \U0001F480"
+title: To Free or Not To Free
 url: 'https://substack.gauravvohra.com/p/to-free-or-not-to-free'
 date: '2025-10-07'
 author: Gaurav Vohra
