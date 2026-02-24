@@ -1,8 +1,8 @@
 ---
-title: Mastering Willingness to Pay
-date: '2026-01-08'
 source: substack
+title: Mastering Willingness to Pay
 url: 'https://substack.gauravvohra.com/p/mastering-willingness-to-pay'
+date: '2026-01-08'
 author: Gaurav Vohra
 transcript: false
 ---
@@ -22,9 +22,9 @@ _This is a guest post from [Fynn Glover](https://www.linkedin.com/in/fynn-glover
 
 _To get the full book, [click here](https://schematichq.com/book?utm_source=gauravnewsletter&utm_medium=newsletter&utm_campaign=book2026&utm_content=schematic) (online) or [click here](https://www.amazon.com/dp/B0G545Y16J) (print)._
 
-**Chapter 2: Mastering Willingness to Pay  
-You’re Leaving Money on the Table  
-by**
+**Mastering Willingness to Pay  
+**from **You’re Leaving Money on the Table  
+**by
 
 After selling my first company — where, for full disclosure, I’d botched pricing and packaging — I was charged with leading pricing at a high-growth cyber company.
 
