@@ -1,8 +1,8 @@
 ---
-source: substack
 title: "The Ultimate List Of Referral Optimizations \U0001F381"
-url: 'https://substack.gauravvohra.com/p/the-ultimate-referral-playbook'
 date: '2025-08-07'
+source: substack
+url: 'https://substack.gauravvohra.com/p/the-ultimate-referral-playbook'
 author: Gaurav Vohra
 transcript: false
 ---
