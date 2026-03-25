@@ -1,11 +1,17 @@
 ---
-title: Word of Agents
-date: '2026-03-02'
 source: substack
+title: Word of Agents
 url: 'https://substack.gauravvohra.com/p/word-of-agents'
+date: '2026-03-02'
 author: Gaurav Vohra
 transcript: false
 ---
+For centuries companies fought for word of mouth.
+
+Organic, trusted, and scalable. The ultimate growth loop.
+
+But what happens to word of mouth when the mouths disappear?
+
 [
 
 ![](https://substackcdn.com/image/fetch/$s_!GCVw!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4c6ddd59-cd75-44c6-9cd6-12b32725935e_1536x788.png)
@@ -13,12 +19,6 @@ transcript: false
 
 
 ](https://substackcdn.com/image/fetch/$s_!GCVw!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4c6ddd59-cd75-44c6-9cd6-12b32725935e_1536x788.png)
-
-For centuries companies fought for word of mouth.
-
-Organic, trusted, and scalable. The ultimate growth loop.
-
-But what happens to word of mouth when the mouths disappear?
 
 Thank you for reading Growth by Gaurav. Consider subscribing for the latest.
 
