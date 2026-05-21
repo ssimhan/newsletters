@@ -1,8 +1,8 @@
 ---
-title: Hiring is Basically Growth
-date: '2025-12-29'
 source: substack
+title: Hiring is Basically Growth
 url: 'https://substack.gauravvohra.com/p/hiring-is-basically-growth'
+date: '2025-12-29'
 author: Gaurav Vohra
 transcript: false
 ---
