@@ -152,7 +152,7 @@ Like inbound, this channel is often dismissed as low quality.
 
 But again, this is wrong. Again, many of my best founding engineers were sourced on hiring platforms.
 
-Hiring platforms come and go, but some at the time of writing: [Wellfound](https://wellfound.com/) and [Next Play](https://www.nextplay.so/recruiting). Campus recruiting is also a form of hiring platform.
+Hiring platforms come and go, but some at the time of writing: [Paraform](http://paraform.com), [Wellfound](https://wellfound.com/) and [Next Play](https://www.nextplay.so/recruiting). Campus recruiting is also a form of hiring platform.
 
 ### Referral
 
