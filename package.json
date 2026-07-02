@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "test": "node --test",
     "smoke": "node scripts/smoke-commit.js",
     "validate": "node scripts/validate-frontmatter.js",
     "validate:fix": "node scripts/validate-frontmatter.js --fix",

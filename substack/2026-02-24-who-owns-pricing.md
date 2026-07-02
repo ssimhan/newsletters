@@ -1,8 +1,8 @@
 ---
-source: substack
 title: Who Owns Pricing?
-url: 'https://substack.gauravvohra.com/p/who-owns-pricing'
 date: '2026-02-24'
+source: substack
+url: 'https://substack.gauravvohra.com/p/who-owns-pricing'
 author: Gaurav Vohra
 transcript: false
 ---

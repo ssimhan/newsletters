@@ -6,10 +6,10 @@ import slugify from "slugify";
 
 export function toMarkdownFile({ frontmatter, bodyMd }) {
   const fm = {
-    source: frontmatter.source,
     title: frontmatter.title,
-    url: frontmatter.url,
     date: frontmatter.date,
+    source: frontmatter.source,
+    url: frontmatter.url,
     author: frontmatter.author || '',
     transcript: !!frontmatter.transcript
   };

@@ -56,16 +56,16 @@ export async function ingestPodcast(feedUrl) {
     const path = `podcasts/${slug}.md`;
 
     try {
-      await upsertFile({
+      const result = await upsertFile({
         path,
         content: md,
         message: `podcast: ${title}`
       });
-      count += 1;
+      if (result.changed) count += 1;
     } catch (e) {
       console.error(`skip ${title}: ${e.message}`);
     }
   }
 
-  console.log(`Ingested ${count} podcast items.`);
+  console.log(`Updated ${count} podcast items.`);
 }

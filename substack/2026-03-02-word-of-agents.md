@@ -1,8 +1,8 @@
 ---
-source: substack
 title: Word of Agents
-url: 'https://substack.gauravvohra.com/p/word-of-agents'
 date: '2026-03-02'
+source: substack
+url: 'https://substack.gauravvohra.com/p/word-of-agents'
 author: Gaurav Vohra
 transcript: false
 ---
