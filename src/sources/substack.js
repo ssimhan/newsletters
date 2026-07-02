@@ -65,17 +65,17 @@ export async function ingestSubstack(feedUrl) {
 
     try {
       // Upsert by canonical path (safe: overwrites same article name)
-      await upsertFile({
+      const result = await upsertFile({
         path: filePath,
         content: md,
         message: `substack: ${title}`,
       });
-      console.log(`Upserted: ${filePath}`);
-      count += 1;
+      console.log(`${result.changed ? 'Updated' : 'Unchanged'}: ${filePath}`);
+      if (result.changed) count += 1;
     } catch (e) {
       console.error(`skip ${title}: ${e.message}`);
     }
   }
 
-  console.log(`Ingested ${count} items from Substack feed.`);
+  console.log(`Updated ${count} items from Substack feed.`);
 }

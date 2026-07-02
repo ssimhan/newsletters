@@ -34,10 +34,10 @@ Each Markdown file follows a consistent frontmatter format:
 
 ```yaml
 ---
-source: substack | podcast | web
 title: "Example Title"
-url: "https://example.com"
 date: "YYYY-MM-DD"
+source: substack | podcast | web
+url: "https://example.com"
 author: "Author Name"
 transcript: true | false
 ---
@@ -60,7 +60,7 @@ It runs automatically every day via GitHub Actions, cleans up filenames, validat
 | 1️⃣ **Ingests**    | Pulls new posts from a Substack RSS feed and podcast RSS feed.                             |
 | 2️⃣ **Normalizes** | Strips random hash suffixes (like `-abc123.md`) from filenames and keeps everything clean. |
 | 3️⃣ **Validates**  | Ensures each Markdown file has valid frontmatter (`title`, `date`, `source`, etc.).        |
-| 4️⃣ **Commits**    | Automatically commits any changes back to the repo using a rebase-safe push.               |
+| 4️⃣ **Commits**    | Commits only new or changed content; unchanged feed items are skipped.                     |
 | 5️⃣ **Schedules**  | Runs every day at 09:17 UTC, or anytime manually via “Run workflow” in GitHub Actions.     |
 
 ---
@@ -78,15 +78,16 @@ It runs automatically every day via GitHub Actions, cleans up filenames, validat
 
 ### 2. Add Your Own Feeds
 
-Go to **Settings → Secrets and variables → Actions → New repository secret**, and add:
+Edit the feed URLs in `.github/workflows/sync.yml`:
 
-| Name            | Example                                    | Description                              |
-| --------------- | ------------------------------------------ | ---------------------------------------- |
-| `PAT_REPO`      | `ghp_xxxxxxxxxxx`                          | Personal Access Token with `repo` scope. |
-| `SUBSTACK_FEED` | `https://yournewsletter.substack.com/feed` | Your Substack RSS feed.                  |
-| `PODCAST_FEED`  | `https://feeds.simplecast.com/xyz123`      | (Optional) Your podcast RSS feed.        |
+| Name             | Example                                    | Description                       |
+| ---------------- | ------------------------------------------ | --------------------------------- |
+| `SUBSTACK_FEED`  | `https://yournewsletter.substack.com/feed` | Your Substack RSS feed.           |
+| `PODCAST_FEED`   | `https://feeds.simplecast.com/xyz123`      | Optional podcast RSS feed.        |
 
 > 💡 If you have multiple Substack feeds, you can later replace `SUBSTACK_FEED` with `SUBSTACK_FEEDS` (comma-separated) once multi-feed support is enabled.
+
+The workflow expects a `PAT_REPO` repository secret with permission to write repository contents.
 
 ### 3. Verify the Workflow
 
@@ -191,4 +192,3 @@ inspired by **Lenny’s Newsletter Product Pass** and open-source automation wor
 ---
 
 **License:** MIT — use freely, adapt for your own content systems.
-
