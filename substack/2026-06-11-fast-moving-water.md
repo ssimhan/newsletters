@@ -1,8 +1,8 @@
 ---
-title: Fast Moving Water
-date: '2026-06-11'
 source: substack
+title: Fast Moving Water
 url: 'https://substack.gauravvohra.com/p/fast-moving-water'
+date: '2026-06-11'
 author: Gaurav Vohra
 transcript: false
 ---
