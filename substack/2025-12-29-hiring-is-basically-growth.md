@@ -236,13 +236,7 @@ Everything starts with the number of hires needed.
 
 In this example we’re going big: we need 10 hires.
 
-[
-
 ![](https://substackcdn.com/image/fetch/$s_!Ek0o!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb776d60f-8dff-40b1-90cd-8548776c9ad1_816x60.png)
-
-
-
-](https://substackcdn.com/image/fetch/$s_!Ek0o!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb776d60f-8dff-40b1-90cd-8548776c9ad1_816x60.png)
 
 Punch in your target at the top.
 
@@ -292,13 +286,7 @@ For founding engineers I typically see:
 *   Cold outreach: 35%
     
 
-[
-
 ![](https://substackcdn.com/image/fetch/$s_!SOjv!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F94754fce-8bad-461a-8585-fe24c263fff7_1670x172.png)
-
-
-
-](https://substackcdn.com/image/fetch/$s_!SOjv!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F94754fce-8bad-461a-8585-fe24c263fff7_1670x172.png)
 
 Don’t like this mix? Change it. Just make sure it adds to 100%.
 
@@ -327,13 +315,7 @@ But hiring obviously doesn’t work that way:
 
 These are the percentages I see in healthy founding engineer hiring funnels:
 
-[
-
 ![](https://substackcdn.com/image/fetch/$s_!k7hn!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fad0729be-6f9b-497c-85b2-37854e0c5012_1072x236.png)
-
-
-
-](https://substackcdn.com/image/fetch/$s_!k7hn!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fad0729be-6f9b-497c-85b2-37854e0c5012_1072x236.png)
 
 In the [Loom](https://www.loom.com/share/edb759952b624c8c9638ae88cafe3a12) I elaborate on why these numbers.
 
@@ -351,13 +333,7 @@ The model will now spit out detailed, concrete recruiting goals.
 
 The top row tells you the numbers you must hit to close 10 hires:
 
-[
-
 ![](https://substackcdn.com/image/fetch/$s_!c9_7!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb128eb75-3d84-4f4a-8c7f-51489d909890_958x112.png)
-
-
-
-](https://substackcdn.com/image/fetch/$s_!c9_7!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb128eb75-3d84-4f4a-8c7f-51489d909890_958x112.png)
 
 In this example, you need to:
 
@@ -376,13 +352,7 @@ If you do this and the conversion rates hold, you’ll hit your hiring goals.
 
 The rest of the first table tells you how much total activity is needed.
 
-[
-
 ![](https://substackcdn.com/image/fetch/$s_!vSax!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8352c558-b711-4c0e-abe6-c5bcba0edf2d_1166x280.png)
-
-
-
-](https://substackcdn.com/image/fetch/$s_!vSax!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8352c558-b711-4c0e-abe6-c5bcba0edf2d_1166x280.png)
 
 In this example you must run 192 screens and 34 onsites to reach 10 hires.
 
@@ -400,13 +370,7 @@ Beyond onsites, you’ll need to deliver (at least) 13 offers to get to 10 accep
 
 The final section tells you how much _weekly_ activity you need.
 
-[
-
 ![](https://substackcdn.com/image/fetch/$s_!9GyF!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe164b2d9-7a3d-432b-a1de-01d3b87a1813_1192x282.png)
-
-
-
-](https://substackcdn.com/image/fetch/$s_!9GyF!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe164b2d9-7a3d-432b-a1de-01d3b87a1813_1192x282.png)
 
 In this example, you must do (at least) 11 screens, 2 onsites, and give 1 offer _each week_ to hit the goal.
 
