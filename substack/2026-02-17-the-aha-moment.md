@@ -137,7 +137,7 @@ As many friends, as fast as possible
 
 This lets you construct a KPI: the % of each new cohort hitting the “aha moment”.
 
-KPIs are useful to track progress, establish causality, confirm incrementality.
+Sure, KPIs are useful to track progress, establish causality, confirm incrementality.
 
 But to _actually improve the customer experience_?
 
